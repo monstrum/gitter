@@ -32,6 +32,13 @@ class Blob extends Object
         return $data;
     }
 
+    public function fileNameByHash($hash)
+    {
+        $data = $this->getRepository()->getClient()->run($this->getRepository(), 'rev-list --objects --all | grep ' . $this->getHash());
+
+        return $data;
+    }
+
     public function getMode()
     {
         return $this->mode;
